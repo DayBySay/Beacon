@@ -12,6 +12,7 @@
 		3AC0D74B1BD1F086004EA97B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AC0D7491BD1F086004EA97B /* Main.storyboard */; };
 		3AC0D74D1BD1F086004EA97B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AC0D74C1BD1F086004EA97B /* Assets.xcassets */; };
 		3AC0D7501BD1F086004EA97B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AC0D74E1BD1F086004EA97B /* LaunchScreen.storyboard */; };
+		3AC0D75A1BD20E6D004EA97B /* BAPLocationBeaconRegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC0D7591BD20E6D004EA97B /* BAPLocationBeaconRegionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		3AC0D74C1BD1F086004EA97B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3AC0D74F1BD1F086004EA97B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3AC0D7511BD1F086004EA97B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3AC0D7591BD20E6D004EA97B /* BAPLocationBeaconRegionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BAPLocationBeaconRegionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				3AC0D7451BD1F086004EA97B /* AppDelegate.swift */,
 				3AC0D7471BD1F086004EA97B /* ViewController.swift */,
+				3AC0D7591BD20E6D004EA97B /* BAPLocationBeaconRegionViewController.swift */,
 				3AC0D7491BD1F086004EA97B /* Main.storyboard */,
 				3AC0D74C1BD1F086004EA97B /* Assets.xcassets */,
 				3AC0D74E1BD1F086004EA97B /* LaunchScreen.storyboard */,
@@ -96,6 +99,7 @@
 				TargetAttributes = {
 					3AC0D7411BD1F086004EA97B = {
 						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = X6933S8LBP;
 					};
 				};
 			};
@@ -137,6 +141,7 @@
 			files = (
 				3AC0D7481BD1F086004EA97B /* ViewController.swift in Sources */,
 				3AC0D7461BD1F086004EA97B /* AppDelegate.swift in Sources */,
+				3AC0D75A1BD20E6D004EA97B /* BAPLocationBeaconRegionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,6 +252,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = BeaconApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.prh.BeaconApp;
@@ -258,6 +264,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = BeaconApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.prh.BeaconApp;
@@ -284,6 +291,7 @@
 				3AC0D7561BD1F086004EA97B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
