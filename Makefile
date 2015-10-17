@@ -4,7 +4,7 @@ NODE?=$(shell which node)
 all:
 
 install:
-	$(NPM) install bleacon
+	$(NPM) install 
 
 receiver:
 	$(NODE) receive.js
