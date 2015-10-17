@@ -11,11 +11,14 @@ import CoreLocation
 
 class BAPLocationBeaconRegionViewController: UIViewController, CLLocationManagerDelegate {
     var locationManager: CLLocationManager!
-    @IBOutlet weak var regionStateLabel: UILabel!
     var beaconRegion: CLBeaconRegion!
+    
+    @IBOutlet weak var regionStateLabel: UILabel!
+    @IBOutlet weak var nameTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.locationManager = CLLocationManager()
         locationManager.delegate = self
         self.locationManager.requestAlwaysAuthorization()
@@ -42,11 +45,13 @@ class BAPLocationBeaconRegionViewController: UIViewController, CLLocationManager
     }
     
     func locationManager(manager: CLLocationManager, didEnterRegion region: CLRegion) {
-       self.regionStateLabel.text = "in"
+        self.regionStateLabel.text = "in"
+        AJITOAPI.IN.post(name: self.nameTextField.text)
     }
     
     func locationManager(manager: CLLocationManager, didExitRegion region: CLRegion) {
        self.regionStateLabel.text = "out"
+        AJITOAPI.OUT.post(name: self.nameTextField.text)
     }
     
     func locationManager(manager: CLLocationManager, didDetermineState state: CLRegionState, forRegion region: CLRegion) {
@@ -55,5 +60,29 @@ class BAPLocationBeaconRegionViewController: UIViewController, CLLocationManager
     
     func locationManager(manager: CLLocationManager, didStartMonitoringForRegion region: CLRegion) {
         self.locationManager.requestStateForRegion(self.beaconRegion)
+    }
+    
+    enum AJITOAPI: String {
+        case IN = "/ajiting"
+        case OUT = "/ajiting-out"
+        
+        var baseURLString: String {
+            return "http://jewelpet.herokuapp.com/hubot/"
+        }
+        
+        var key: String {
+            return "exYuTsKhZF6t2V"
+        }
+        
+        func post(name name: String?) {
+            let name = name ?? "名無しさん"
+            let request = NSMutableURLRequest(URL: NSURL(string: baseURLString + self.rawValue)!)
+            request.HTTPMethod = "POST"
+            request.HTTPBody = "user=\(name)&key=\(key)".dataUsingEncoding(NSUTF8StringEncoding)
+            let session = NSURLSession.sharedSession()
+            session.dataTaskWithRequest(request) { (_, response, error) -> Void in
+                // TODO: エラーハンドリング
+            }.resume()
+        }
     }
 }
