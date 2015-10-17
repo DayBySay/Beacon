@@ -8,3 +8,6 @@ install:
 
 receiver:
 	$(NODE) receive.js
+
+peripheral:
+	$(NODE) peripheral.js
