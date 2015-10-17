@@ -6,8 +6,8 @@ all:
 install:
 	$(NPM) install 
 
-receiver:
-	$(NODE) receive.js
+central:
+	$(NODE) central.js
 
 peripheral:
 	$(NODE) peripheral.js

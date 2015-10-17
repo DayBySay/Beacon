@@ -1,4 +1,4 @@
-Bleacon = require('bleacon');
+var Bleacon = require('bleacon');
 Bleacon.startScanning();
 
 Bleacon.on('discover', function(bleacon) {
