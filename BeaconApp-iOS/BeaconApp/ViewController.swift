@@ -9,7 +9,7 @@
 import UIKit
 import CoreBluetooth
 
-class ViewController: UIViewController, CBCentralManagerDelegate {
+class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDelegate {
     var centralManager: CBCentralManager!
     var peripheral: CBPeripheral!
 
@@ -36,8 +36,10 @@ class ViewController: UIViewController, CBCentralManagerDelegate {
     
     func centralManager(central: CBCentralManager, didDiscoverPeripheral peripheral: CBPeripheral, advertisementData: [String : AnyObject], RSSI: NSNumber) {
         print("peripheral: \(peripheral)")
-//        self.centralManager.stopScan()
-        
+        self.centralManager.stopScan()
+        self.peripheral = peripheral
+        self.peripheral.delegate = self
+        self.centralManager.connectPeripheral(self.peripheral, options: nil)
     }
     
     func centralManager(central: CBCentralManager, didConnectPeripheral peripheral: CBPeripheral) {
