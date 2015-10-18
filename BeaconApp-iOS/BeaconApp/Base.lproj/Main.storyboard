@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9048"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Location Beacon Region View Controller-->
@@ -18,16 +17,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wwh-Wv-B0V">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wwh-Wv-B0V">
                                 <rect key="frame" x="166" y="324" width="42" height="19"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9hH-OG-6PJ">
-                                <rect key="frame" x="89" y="259" width="196" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QoL-Nr-VZL">
+                                <rect key="frame" x="89.5" y="269" width="196" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="2oQ-7o-C5J"/>
+                                    <constraint firstAttribute="height" constant="30" id="apK-IU-xpJ"/>
+                                    <constraint firstAttribute="width" constant="196" id="xJe-oC-MfX"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -35,17 +35,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="QoL-Nr-VZL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3NR-eI-8Ce"/>
+                            <constraint firstItem="QoL-Nr-VZL" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="249" id="9Ro-cX-JwM"/>
                             <constraint firstItem="wwh-Wv-B0V" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Frd-kl-VKH"/>
-                            <constraint firstItem="9hH-OG-6PJ" firstAttribute="centerX" secondItem="wwh-Wv-B0V" secondAttribute="centerX" id="Juz-wE-w45"/>
-                            <constraint firstItem="wwh-Wv-B0V" firstAttribute="top" secondItem="9hH-OG-6PJ" secondAttribute="bottom" constant="34.5" id="QlX-v9-Yau"/>
-                            <constraint firstItem="9hH-OG-6PJ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="239" id="SVu-aT-iq1"/>
                             <constraint firstItem="wwh-Wv-B0V" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jLy-xt-xni"/>
-                            <constraint firstItem="9hH-OG-6PJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="73" id="lyO-YA-1pR"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="nameTextField" destination="9hH-OG-6PJ" id="JsM-zY-Fjx"/>
                         <outlet property="regionStateLabel" destination="wwh-Wv-B0V" id="4D2-R4-gsh"/>
                     </connections>
                 </viewController>
