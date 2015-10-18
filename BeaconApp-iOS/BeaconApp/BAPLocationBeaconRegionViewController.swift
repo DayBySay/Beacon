@@ -80,7 +80,7 @@ class BAPLocationBeaconRegionViewController: UIViewController, CLLocationManager
         case OUT = "/ajiting-out"
         
         var baseURLString: String {
-            return "http://jewelpet.herokuapp.com/hubot/"
+            return "http://jewelpet.herokuapp.com/hubot"
         }
         
         var key: String {
@@ -95,8 +95,7 @@ class BAPLocationBeaconRegionViewController: UIViewController, CLLocationManager
             let session = NSURLSession.sharedSession()
             session.dataTaskWithRequest(request) { (_, response, error) -> Void in
                 // TODO: エラーハンドリング
-                print(response)
-                print(error)
+                NSLog("\(response!)")
             }.resume()
         }
     }
