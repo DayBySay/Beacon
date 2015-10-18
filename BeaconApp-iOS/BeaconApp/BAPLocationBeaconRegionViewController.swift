@@ -9,19 +9,23 @@
 import UIKit
 import CoreLocation
 
-class BAPLocationBeaconRegionViewController: UIViewController, CLLocationManagerDelegate {
+class BAPLocationBeaconRegionViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
     var locationManager: CLLocationManager!
     var beaconRegion: CLBeaconRegion!
     var UUID: NSUUID? {
        return ProximityUUID.DEBUG.UUID
     }
     var ajiting = false
+    let userNameKey = "BAPUserNameKey"
     
     @IBOutlet weak var regionStateLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.nameTextField.text = NSUserDefaults.standardUserDefaults().objectForKey(self.userNameKey) as? String ?? ""
+        self.nameTextField.delegate = self
         
         self.locationManager = CLLocationManager()
         locationManager.delegate = self
@@ -82,6 +86,23 @@ class BAPLocationBeaconRegionViewController: UIViewController, CLLocationManager
     
     func locationManager(manager: CLLocationManager, didStartMonitoringForRegion region: CLRegion) {
         self.locationManager.requestStateForRegion(self.beaconRegion)
+    }
+    
+    // MARK: - UITextFieldDelegate
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        self.saveUserName(name: textField.text)
+        return true
+    }
+    
+    func saveUserName(name name: String?) {
+        if name?.characters.count == 0 {
+            return
+        }
+        
+        NSUserDefaults.standardUserDefaults().setObject(name, forKey: self.userNameKey)
+        NSUserDefaults.standardUserDefaults().synchronize()
     }
     
     enum AJITOAPI: String {
