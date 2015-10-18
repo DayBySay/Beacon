@@ -15,6 +15,7 @@ class BAPLocationBeaconRegionViewController: UIViewController, CLLocationManager
     var UUID: NSUUID? {
        return ProximityUUID.DEBUG.UUID
     }
+    var ajiting = false
     
     @IBOutlet weak var regionStateLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
@@ -47,12 +48,22 @@ class BAPLocationBeaconRegionViewController: UIViewController, CLLocationManager
     }
     
     func locationManager(manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        if ajiting {
+            return
+        }
+        
         self.regionStateLabel.text = "in"
+        self.ajiting = true
         AJITOAPI.IN.post(name: self.nameTextField.text)
     }
     
     func locationManager(manager: CLLocationManager, didExitRegion region: CLRegion) {
-       self.regionStateLabel.text = "out"
+        if !ajiting {
+            return
+        }
+        
+        self.regionStateLabel.text = "out"
+        self.ajiting = false
         AJITOAPI.OUT.post(name: self.nameTextField.text)
     }
     
