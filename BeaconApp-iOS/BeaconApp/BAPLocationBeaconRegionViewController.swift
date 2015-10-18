@@ -95,6 +95,8 @@ class BAPLocationBeaconRegionViewController: UIViewController, CLLocationManager
             let session = NSURLSession.sharedSession()
             session.dataTaskWithRequest(request) { (_, response, error) -> Void in
                 // TODO: エラーハンドリング
+                print(response)
+                print(error)
             }.resume()
         }
     }
