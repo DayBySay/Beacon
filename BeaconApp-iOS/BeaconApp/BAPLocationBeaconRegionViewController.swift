@@ -47,6 +47,15 @@ class BAPLocationBeaconRegionViewController: UIViewController, CLLocationManager
         self.locationManager.startMonitoringForRegion(self.beaconRegion)
     }
     
+    func userName() -> String {
+        let name = self.nameTextField.text
+        if name?.characters.count == 0 {
+            return name!
+        }
+        
+        return "名無しさん"
+    }
+    
     func locationManager(manager: CLLocationManager, didEnterRegion region: CLRegion) {
         if ajiting {
             return
@@ -54,7 +63,7 @@ class BAPLocationBeaconRegionViewController: UIViewController, CLLocationManager
         
         self.regionStateLabel.text = "in"
         self.ajiting = true
-        AJITOAPI.IN.post(name: self.nameTextField.text)
+        AJITOAPI.IN.post(name: self.userName())
     }
     
     func locationManager(manager: CLLocationManager, didExitRegion region: CLRegion) {
@@ -64,11 +73,11 @@ class BAPLocationBeaconRegionViewController: UIViewController, CLLocationManager
         
         self.regionStateLabel.text = "out"
         self.ajiting = false
-        AJITOAPI.OUT.post(name: self.nameTextField.text)
+        AJITOAPI.OUT.post(name: self.userName())
     }
     
     func locationManager(manager: CLLocationManager, didDetermineState state: CLRegionState, forRegion region: CLRegion) {
-        print("inside: \(state == .Inside), outside: \(state == .Outside), unkown: \(state == .Unknown)")
+        NSLog("inside: \(state == .Inside), outside: \(state == .Outside), unkown: \(state == .Unknown)")
     }
     
     func locationManager(manager: CLLocationManager, didStartMonitoringForRegion region: CLRegion) {
@@ -87,8 +96,7 @@ class BAPLocationBeaconRegionViewController: UIViewController, CLLocationManager
             return "exYuTsKhZF6t2V"
         }
         
-        func post(name name: String?) {
-            let name = name ?? "名無しさん"
+        func post(name name: String) {
             let request = NSMutableURLRequest(URL: NSURL(string: baseURLString + self.rawValue)!)
             request.HTTPMethod = "POST"
             request.HTTPBody = "user=\(name)&key=\(key)".dataUsingEncoding(NSUTF8StringEncoding)
