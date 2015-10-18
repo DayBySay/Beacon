@@ -12,6 +12,9 @@ import CoreLocation
 class BAPLocationBeaconRegionViewController: UIViewController, CLLocationManagerDelegate {
     var locationManager: CLLocationManager!
     var beaconRegion: CLBeaconRegion!
+    var UUID: NSUUID? {
+       return ProximityUUID.DEBUG.UUID
+    }
     
     @IBOutlet weak var regionStateLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
@@ -33,8 +36,7 @@ class BAPLocationBeaconRegionViewController: UIViewController, CLLocationManager
             return
         }
         
-        let UUIDString = "00000000-1D19-1001-B000-001C4DD99A25";
-        guard let UUID = NSUUID(UUIDString: UUIDString) else {
+        guard let UUID = self.UUID else {
             print("UUIDの初期化に失敗しました")
             return
         }
@@ -83,6 +85,16 @@ class BAPLocationBeaconRegionViewController: UIViewController, CLLocationManager
             session.dataTaskWithRequest(request) { (_, response, error) -> Void in
                 // TODO: エラーハンドリング
             }.resume()
+        }
+    }
+    
+    enum ProximityUUID: String {
+        case DEBUG = "AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA"
+        case AJITO = "00000000-1D19-1001-B000-001C4DD99A25"
+        case JUN = "B0FC4601-14A6-43A1-ABCD-CB9CFDDB4013"
+        
+        var UUID: NSUUID? {
+            return NSUUID(UUIDString: self.rawValue)
         }
     }
 }
