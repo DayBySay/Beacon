@@ -13,7 +13,7 @@ class BAPLocationBeaconRegionViewController: UIViewController, CLLocationManager
     var locationManager: CLLocationManager!
     var beaconRegion: CLBeaconRegion!
     var UUID: NSUUID? {
-       return ProximityUUID.DEBUG.UUID
+       return ProximityUUID.AJITO.UUID
     }
     var ajiting = false
     let userNameKey = "BAPUserNameKey"
