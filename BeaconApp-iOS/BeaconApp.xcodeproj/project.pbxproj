@@ -99,7 +99,12 @@
 				TargetAttributes = {
 					3AC0D7411BD1F086004EA97B = {
 						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = X6933S8LBP;
+						DevelopmentTeam = VH7A4U2EEX;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -254,6 +259,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = BeaconApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.prh.BeaconApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -266,6 +272,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = BeaconApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.prh.BeaconApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
