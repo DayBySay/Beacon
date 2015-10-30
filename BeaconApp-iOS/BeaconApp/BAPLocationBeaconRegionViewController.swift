@@ -52,6 +52,10 @@ class BAPLocationBeaconRegionViewController: UIViewController, CLLocationManager
     }
     
     func userName() -> String {
+        if let name = NSUserDefaults.standardUserDefaults().objectForKey(self.userNameKey) as? String {
+            return name
+        }
+        
         let name = self.nameTextField.text
         if name?.characters.count == 0 {
             return name!
